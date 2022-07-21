@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping(path="/person")
 public class PersonController {
     private List<Person> personList = new ArrayList<Person>();
 
@@ -27,21 +28,24 @@ public class PersonController {
     @Value("${error.message}")
     private String errorMessage;
 
-    @RequestMapping(value = { "/", "/home", "/index" }, method = RequestMethod.GET)
+    // @RequestMapping(value = { "/", "/home", "/index" }, method = RequestMethod.GET)
+    @GetMapping(value = { "/", "/home", "/index" })
     public String index(Model model) {
         model.addAttribute("message", message);
 
         return "index";
     }
 
-    @RequestMapping(value = "/testRetrieve", method = RequestMethod.GET, produces = "application/json")
+    //@RequestMapping(value = "/testRetrieve", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/testRetrieve", produces = "application/json")
     public @ResponseBody List<Person> getAllPersons() {
         personList = perSvc.getPersons();
 
         return personList;
     }
 
-    @RequestMapping(value = "/personList", method = RequestMethod.GET)
+    //@RequestMapping(value = "/personList", method = RequestMethod.GET)
+    @GetMapping(value = "/personList")
     public String personList(Model model) {
         personList = perSvc.getPersons();
         model.addAttribute("persons", personList);
@@ -49,7 +53,8 @@ public class PersonController {
         return "personList";
     }
 
-    @RequestMapping(value = "/addPerson", method = RequestMethod.GET)
+    //@RequestMapping(value = "/addPerson", method = RequestMethod.GET)
+    @GetMapping(value = "/addPerson")
     public String showAddPersonPage(Model model) {
         PersonForm pForm = new PersonForm();
         model.addAttribute("personForm", pForm);
@@ -57,7 +62,8 @@ public class PersonController {
         return "addPerson";
     }
 
-    @RequestMapping(value = "/addPerson", method = RequestMethod.POST)
+    //@RequestMapping(value = "/addPerson", method = RequestMethod.POST)
+    @PostMapping(value = "/addPerson")
     public String savePerson(Model model,
             @ModelAttribute("personForm") PersonForm personForm) {
 
@@ -68,7 +74,7 @@ public class PersonController {
             Person newPerson = new Person(fName, lName);
             perSvc.addPerson(newPerson);
 
-            return "redirect:/personList";
+            return "redirect:/person/personList";
         }
 
         model.addAttribute("errorMessage", errorMessage);
