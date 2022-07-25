@@ -80,4 +80,22 @@ public class PersonController {
         model.addAttribute("errorMessage", errorMessage);
         return "addPerson";
     }
+
+    @RequestMapping(value="/personToEdit", method=RequestMethod.POST)
+    public String personToEdit(@ModelAttribute(value="per") Person p, Model model) {
+        model.addAttribute("per", p);
+        return "editPerson";
+    }
+
+    @RequestMapping(value="/personEdit", method = RequestMethod.POST)
+    public String personEdit(@ModelAttribute(value="per") Person p, Model model) {
+        perSvc.updatePerson(p);
+        return "redirect:/person/personList";
+    }
+
+    @RequestMapping(value="/personDelete", method = RequestMethod.POST)
+    public String personDelete(@ModelAttribute(value="per") Person p, Model model) {
+        perSvc.removePerson(p);
+        return "redirect:/person/personList";
+    }
 }
