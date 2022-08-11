@@ -108,3 +108,14 @@ git log
 git reset --soft xxxxxxxxxxx
 
 git reset --hard
+
+## Tagging
+https://initialcommit.com/blog/git-tag#:~:text=A%20tag%20is%20technically%20a%20type%20of%20ref,git%20tag%20v1.0.0%20%24%20git%20tag%20--list%20v1.0.0
+
+git tag -a v1.0.0
+
+git tag --list
+
+git push --tags
+
+git ls-remote --tags
