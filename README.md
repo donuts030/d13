@@ -87,3 +87,20 @@ java.runtime.version=18
 ## Git reset reference
 https://www.w3docs.com/learn-git/git-reset.html
 
+echo 'new file content' > test_file
+
+echo 'append content' >> edited_file
+
+git add test_file edited_file
+
+git status
+
+git ls-files -s
+
+git commit -m "added test_file edited_file"
+
+git log
+
+git reset --soft xxxxxxxxxxx
+
+git reset --hard
