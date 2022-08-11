@@ -83,3 +83,7 @@ java.runtime.version=18
 
 10. git push -u heroku master
 
+
+##Git reset reference
+https://www.w3docs.com/learn-git/git-reset.html
+
