@@ -1,6 +1,6 @@
-#Reference
+# Reference
 
-##Maven Command
+## Maven Command
 
 1. mvnw
 
@@ -19,7 +19,7 @@
 8. mvnw clean test
 
 
-##Git command
+## Git command
 
 1. git init (initial a local repo, doesn't link to remote yet)
 
@@ -84,6 +84,6 @@ java.runtime.version=18
 10. git push -u heroku master
 
 
-##Git reset reference
+## Git reset reference
 https://www.w3docs.com/learn-git/git-reset.html
 
