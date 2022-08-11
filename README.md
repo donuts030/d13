@@ -97,6 +97,10 @@ git status
 
 git ls-files -s
 
+git reset HEAD
+
+git add test_file edited_file
+
 git commit -m "added test_file edited_file"
 
 git log
